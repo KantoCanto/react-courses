@@ -45,14 +45,6 @@
   gap: 1rem;
 }
 
-.author img {
-  box-sizing: initial;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 0.5rem;
-  border: 4px solid var(--gray-600);
-}
-
 .authorInfo {
   display: flex;
   flex-direction: column;
