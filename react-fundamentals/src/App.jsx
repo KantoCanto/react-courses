@@ -1,38 +1,81 @@
-import {Header} from "./components/Header"
-import { Post } from "./components/Post"
-import {Sidebar} from "./components/Sidebar"
+import { Header } from "./components/Header";
+import { Post } from "./components/Post";
+import { Sidebar } from "./components/Sidebar";
 
-import "./globalStyles.css"
-import styles from "./App.module.css"
+import "./globalStyles.css";
+import styles from "./App.module.css";
+
+//author: {avatar_url: "", name: "", role: ""}
+//publishedAt: Date
+//content: String
+
+const post = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: "https://github.com/kantocanto.png",
+      name: "Author Name",
+      role: "Author Job",
+    },
+    content: [
+      { type: "paragraph", content: "This is a sentence." },
+      { type: "paragraph", content: "Yet another sentence." },
+      { type: "paragraph", content: "Last sentence?" },
+    ],
+    publishedAt: new Date("2022-05-03 20"),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: "https://github.com/kantocanto.png",
+      name: "Second Author Name",
+      role: "Second Author Job",
+    },
+    content: [
+      { type: "paragraph", content: "This is a sentence." },
+      { type: "paragraph", content: "Yet another sentence." },
+      { type: "paragraph", content: "Last sentence?" },
+    ],
+    publishedAt: new Date("2022-05-03 20"),
+  },
+  {
+    id: 3,
+    author: {
+      avatarUrl: "https://github.com/kantocanto.png",
+      name: "Third Author Name",
+      role: "Third Author Job",
+    },
+    content: [
+      { type: "paragraph", content: "This is a sentence." },
+      { type: "paragraph", content: "Yet another sentence." },
+      { type: "paragraph", content: "Last sentence?" },
+    ],
+    publishedAt: new Date("2022-05-03 20"),
+  },
+];
 
 export function App() {
-
-  return(
+  return (
     <div>
       <Header />
 
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-        <div>
-          <Post 
-            author="random" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis fugiat laudantium vero tempora eum impedit, obcaecati voluptas odit magni dolorem quos voluptatum enim molestiae facere, rerum at, ratione ipsam! Officia." 
-          />
-          <Post 
-            author="different author" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis fugiat laudantium vero tempora eum impedit, obcaecati voluptas odit magni dolorem quos voluptatum enim molestiae facere, rerum at, ratione ipsam! Officia." 
-          />
-          <Post 
-            author="third author" 
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis fugiat laudantium vero tempora eum impedit, obcaecati voluptas odit magni dolorem quos voluptatum enim molestiae facere, rerum at, ratione ipsam! Officia." 
-          />
-        </div>
+          <div>
+            {post.map((post) => {
+              return (
+                <Post
+                  key={post.id}
+                  author={post.author}
+                  content={post.content}
+                  publishedAt={post.publishedAt}
+                />
+              );
+            })}
+          </div>
         </main>
-        
       </div>
-     
     </div>
-)
+  );
 }
-

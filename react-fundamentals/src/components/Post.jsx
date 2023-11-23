@@ -2,23 +2,26 @@ import styles from "./Post.module.css";
 import { Comment } from "./Comment";
 import { Avatar } from "./Avatar";
 
-export function Post() {
+export function Post({ author, publishedAt }) {
+  const publishedDateFormated = new Intl.DateTimeFormat("pt-PT", {
+    day: "2-digit",
+    month: "long",
+    time,
+  });
+
   return (
     <article className={styles.post}>
       <header>
         <div className={styles.author}>
-          <Avatar
-            hasBorder={false}
-            src="https://avatars.githubusercontent.com/u/74272648?v=4"
-          />
+          <Avatar src={author.avatarUrl} />
           <div className={styles.authorInfo}>
-            <strong>Author Name</strong>
-            <span>Author Job</span>
+            <strong>{author.name}</strong>
+            <span>{author.role}</span>
           </div>
         </div>
 
         <time title="20th november @ 12:12h" dateTime="2023-11-20">
-          Published 1h ago
+          {publishedAt.toString()}
         </time>
       </header>
 
