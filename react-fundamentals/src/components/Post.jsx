@@ -20,6 +20,7 @@ export function Post({ author, publishedAt, content }) {
   const [comments, setComments] = useState([]);
 
   const [newCommentText, setNewCommentText] = useState("");
+
   function handleNewCommentChange() {
     setNewCommentText(event.target.value);
   }
@@ -39,6 +40,7 @@ export function Post({ author, publishedAt, content }) {
     setComments(commentsWithoutDeletedOne);
   }
 
+  const isNewCommentEmpty = newCommentText.length === 0;
   return (
     <article className={styles.post}>
       <header>
@@ -75,13 +77,16 @@ export function Post({ author, publishedAt, content }) {
       <form onSubmit={handleCreateNewComment} className={styles.commentForm}>
         <strong>Leave your Feedback:</strong>
         <textarea
+          required
           name="comment"
           value={newCommentText}
           placeholder="Comment..."
           onChange={handleNewCommentChange}
         />
         <footer>
-          <button type="submit">Publish</button>
+          <button disabled={isNewCommentEmpty} type="submit">
+            Publish
+          </button>
         </footer>
       </form>
 
